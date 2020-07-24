@@ -14,7 +14,7 @@ namespace MangalWeb.Controllers
         {
             _homeService = homeService;
         }
-        HomeService homeService = new HomeService();
+        //HomeService homeService = new HomeService();
         public ActionResult Index()
         {
             var test = _homeService.GetAlltblBankMasters();
