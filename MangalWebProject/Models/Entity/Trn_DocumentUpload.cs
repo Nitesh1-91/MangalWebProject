@@ -17,13 +17,16 @@ namespace MangalWebProject.Models.Entity
         public int DocId { get; set; }
         public int TransactionId { get; set; }
         public string TransactionNumber { get; set; }
+        public Nullable<System.DateTime> DocDate { get; set; }
         public string CustomerId { get; set; }
         public string ApplicationNo { get; set; }
         public string LoanAccountNo { get; set; }
         public Nullable<int> DocumentTypeId { get; set; }
         public Nullable<int> DocumentId { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
-        public byte[] UploadDocName { get; set; }
+        public string FileName { get; set; }
+        public string FileExtension { get; set; }
+        public string UploadFileBase64 { get; set; }
         public string Comments { get; set; }
         public Nullable<int> BranchId { get; set; }
         public Nullable<int> FinancialYearId { get; set; }

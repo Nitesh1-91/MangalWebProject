@@ -434,6 +434,58 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
           <Property Name="PgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PgName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="Trans_KYCDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PanNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdhaarNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="50" />
+          <Property Name="KYCDate" Type="datetime" />
+          <Property Name="ApplicationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicationDate" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ApplicantPrefix" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Father_Spouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="Father_SpouseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MotherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Age" Type="int" />
+          <Property Name="CKYCNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emailid" Type="nvarchar" MaxLength="50" />
+          <Property Name="SourceOfApplication" Type="nvarchar" MaxLength="50" />
+          <Property Name="SourceType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExistingPLCaseNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentAnnualIncome" Type="nvarchar" MaxLength="50" />
+          <Property Name="OccupationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="OccupationOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameofOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="Industrytype" Type="nvarchar" MaxLength="50" />
+          <Property Name="IndustryOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomineeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomineeAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomineeMobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomineeRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomineePanNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomineeAdharNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocumentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocumentOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nameondocument" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expirydate" Type="date" />
+          <Property Name="DocumentURL" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
         <EntityType Name="Trn_DocumentUpload">
           <Key>
             <PropertyRef Name="DocId" />
@@ -441,13 +493,16 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
           <Property Name="DocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TransactionId" Type="int" Nullable="false" />
           <Property Name="TransactionNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DocDate" Type="datetime" />
           <Property Name="CustomerId" Type="varchar" MaxLength="50" />
           <Property Name="ApplicationNo" Type="varchar" MaxLength="50" />
           <Property Name="LoanAccountNo" Type="varchar" MaxLength="50" />
           <Property Name="DocumentTypeId" Type="int" />
           <Property Name="DocumentId" Type="int" />
           <Property Name="ExpiryDate" Type="datetime" />
-          <Property Name="UploadDocName" Type="varbinary(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="FileExtension" Type="nvarchar" MaxLength="50" />
+          <Property Name="UploadFileBase64" Type="nvarchar(max)" />
           <Property Name="Comments" Type="varchar" MaxLength="100" />
           <Property Name="BranchId" Type="int" />
           <Property Name="FinancialYearId" Type="int" />
@@ -609,6 +664,7 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
           <EntitySet Name="tblfinancialyear" EntityType="Self.tblfinancialyear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGroupMaster" EntityType="Self.tblGroupMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPrimaryGroup" EntityType="Self.tblPrimaryGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trans_KYCDetails" EntityType="Self.Trans_KYCDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trn_DocumentUpload" EntityType="Self.Trn_DocumentUpload" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="u_userauthorization" EntityType="Self.u_userauthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" store:Type="Tables" store:Schema="dbo">
@@ -811,8 +867,9 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
             <End Role="Mst_ChildDeviation" EntitySet="Mst_ChildDeviation" />
           </AssociationSet>
           <EntitySet Name="tbl_UserCategory" EntityType="MangalDBModel.tbl_UserCategory" />
-          <EntitySet Name="Trn_DocumentUpload" EntityType="MangalDBModel.Trn_DocumentUpload" />
           <EntitySet Name="Mst_DocumentType" EntityType="MangalDBModel.Mst_DocumentType" />
+          <EntitySet Name="Trans_KYCDetails" EntityType="MangalDBModel.Trans_KYCDetails" />
+          <EntitySet Name="Trn_DocumentUpload" EntityType="MangalDBModel.Trn_DocumentUpload" />
           </EntityContainer>
         <EntityType Name="Mst_City">
           <Key>
@@ -1294,6 +1351,65 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
           <Property Name="Organhieraechyid" Type="Int32" />
           <Property Name="status1" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Mst_DocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Trans_KYCDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdhaarNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KYCDate" Type="DateTime" Precision="3" />
+          <Property Name="ApplicationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ApplicantPrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Father_Spouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Father_SpouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="CKYCNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SourceOfApplication" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SourceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExistingPLCaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PresentAnnualIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OccupationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OccupationOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameofOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Industrytype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomineeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomineeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomineeMobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomineeRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomineePanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomineeAdharNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nameondocument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expirydate" Type="DateTime" Precision="0" />
+          <Property Name="DocumentURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
         <EntityType Name="Trn_DocumentUpload">
           <Key>
             <PropertyRef Name="DocId" />
@@ -1301,13 +1417,16 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
           <Property Name="DocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TransactionId" Type="Int32" Nullable="false" />
           <Property Name="TransactionNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DocDate" Type="DateTime" Precision="3" />
           <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApplicationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LoanAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DocumentTypeId" Type="Int32" />
           <Property Name="DocumentId" Type="Int32" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="UploadDocName" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UploadFileBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BranchId" Type="Int32" />
           <Property Name="FinancialYearId" Type="Int32" />
@@ -1320,13 +1439,6 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
           <Property Name="RecordUpdated" Type="DateTime" Precision="3" />
           <Property Name="RecordCreatedBy" Type="Int32" />
           <Property Name="RecordUpdatedBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Mst_DocumentType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1805,6 +1917,67 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Mst_DocumentType">
+            <EntityTypeMapping TypeName="MangalDBModel.Mst_DocumentType">
+              <MappingFragment StoreEntitySet="Mst_DocumentType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trans_KYCDetails">
+            <EntityTypeMapping TypeName="MangalDBModel.Trans_KYCDetails">
+              <MappingFragment StoreEntitySet="Trans_KYCDetails">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DocumentURL" ColumnName="DocumentURL" />
+                <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+                <ScalarProperty Name="Nameondocument" ColumnName="Nameondocument" />
+                <ScalarProperty Name="DocumentOther" ColumnName="DocumentOther" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="NomineeAdharNo" ColumnName="NomineeAdharNo" />
+                <ScalarProperty Name="NomineePanNo" ColumnName="NomineePanNo" />
+                <ScalarProperty Name="NomineeRelationship" ColumnName="NomineeRelationship" />
+                <ScalarProperty Name="NomineeMobileNo" ColumnName="NomineeMobileNo" />
+                <ScalarProperty Name="NomineeAddress" ColumnName="NomineeAddress" />
+                <ScalarProperty Name="NomineeName" ColumnName="NomineeName" />
+                <ScalarProperty Name="IndustryOther" ColumnName="IndustryOther" />
+                <ScalarProperty Name="Industrytype" ColumnName="Industrytype" />
+                <ScalarProperty Name="NameofOrganization" ColumnName="NameofOrganization" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="OccupationOther" ColumnName="OccupationOther" />
+                <ScalarProperty Name="OccupationType" ColumnName="OccupationType" />
+                <ScalarProperty Name="PresentAnnualIncome" ColumnName="PresentAnnualIncome" />
+                <ScalarProperty Name="ExistingPLCaseNo" ColumnName="ExistingPLCaseNo" />
+                <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+                <ScalarProperty Name="SourceOfApplication" ColumnName="SourceOfApplication" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="CKYCNo" ColumnName="CKYCNo" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="Father_SpouseName" ColumnName="Father_SpouseName" />
+                <ScalarProperty Name="Father_Spouse" ColumnName="Father_Spouse" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="ApplicantPrefix" ColumnName="ApplicantPrefix" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+                <ScalarProperty Name="ApplicationNo" ColumnName="ApplicationNo" />
+                <ScalarProperty Name="KYCDate" ColumnName="KYCDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AdhaarNo" ColumnName="AdhaarNo" />
+                <ScalarProperty Name="PanNo" ColumnName="PanNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Trn_DocumentUpload">
             <EntityTypeMapping TypeName="MangalDBModel.Trn_DocumentUpload">
               <MappingFragment StoreEntitySet="Trn_DocumentUpload">
@@ -1820,24 +1993,19 @@ warning 6002: The table/view 'MangalDB.dbo.tbl_User' does not have a primary key
                 <ScalarProperty Name="FinancialYearId" ColumnName="FinancialYearId" />
                 <ScalarProperty Name="BranchId" ColumnName="BranchId" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="UploadDocName" ColumnName="UploadDocName" />
+                <ScalarProperty Name="UploadFileBase64" ColumnName="UploadFileBase64" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
                 <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
                 <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
                 <ScalarProperty Name="LoanAccountNo" ColumnName="LoanAccountNo" />
                 <ScalarProperty Name="ApplicationNo" ColumnName="ApplicationNo" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
                 <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
                 <ScalarProperty Name="DocId" ColumnName="DocId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Mst_DocumentType">
-            <EntityTypeMapping TypeName="MangalDBModel.Mst_DocumentType">
-              <MappingFragment StoreEntitySet="Mst_DocumentType">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
