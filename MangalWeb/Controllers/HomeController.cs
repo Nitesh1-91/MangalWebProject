@@ -7,18 +7,14 @@ using System.Web.Mvc;
 
 namespace MangalWeb.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly HomeService _homeService;
-        public HomeController(HomeService homeService)
-        {
-            _homeService = homeService;
-        }
-        //HomeService homeService = new HomeService();
-        public ActionResult Index()
+        HomeService _homeService = new HomeService();
+       
+        public ActionResult Home()
         {
             var test = _homeService.GetAlltblBankMasters();
-            return View();
+            return View("Index");
         }
 
         public ActionResult About()
