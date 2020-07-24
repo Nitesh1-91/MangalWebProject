@@ -1,0 +1,59 @@
+﻿<div id="sidebar" class="nav-collapse ">
+    <!-- sidebar menu start-->
+    <ul class="sidebar-menu">
+        @*<li class="">
+            <a class="" href="#">
+                <i class="icon_house_alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>*@
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_document_alt"></i>
+                <span>Masters</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li>@Html.ActionLink("State", "State", "State")</li>
+                <li>
+                    @Html.ActionLink("City", "City", "City")
+                </li>
+                <li>@Html.ActionLink("Zone", "Zone", "Zone")</li>
+                <li>@Html.ActionLink("Pincode", "Pincode", "Pincode")</li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_desktop"></i>
+                <span>Transactions</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="general.html">KYC</a></li>
+                <li><a class="" href="buttons.html">Document Upload</a></li>
+                <li><a class="" href="grids.html">Document Verification</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_table"></i>
+                <span>Reports</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="basic_table.html">Reports</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu ">
+            <a href="javascript:;" class="">
+                <i class="icon_documents_alt"></i>
+                <span>Utilities</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="profile.html">Utilities</a></li>
+            </ul>
+        </li>
+    </ul>
+    <!-- sidebar menu end-->
+</div>
