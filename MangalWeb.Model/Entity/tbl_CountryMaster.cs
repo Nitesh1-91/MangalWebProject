@@ -14,8 +14,17 @@ namespace MangalWeb.Model.Entity
     
     public partial class tbl_CountryMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_CountryMaster()
+        {
+            this.tblStateMasters = new HashSet<tblStateMaster>();
+        }
+    
         public int CountryID { get; set; }
         public string CountryName { get; set; }
         public string CountryCode { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblStateMaster> tblStateMasters { get; set; }
     }
 }

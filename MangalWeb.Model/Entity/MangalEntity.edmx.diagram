@@ -68,9 +68,10 @@
         <EntityTypeShape EntityType="MangalDBNewModel.tblPenaltySlabtMaster" Width="1.5" PointX="23.375" PointY="9.75" />
         <EntityTypeShape EntityType="MangalDBNewModel.tblSchemeMaster" Width="1.5" PointX="9.375" PointY="23.75" />
         <EntityTypeShape EntityType="MangalDBNewModel.tblSchemeTransMaster" Width="1.5" PointX="23.375" PointY="12.75" />
-        <EntityTypeShape EntityType="MangalDBNewModel.tblStateMaster" Width="1.5" PointX="23.375" PointY="17.75" />
         <EntityTypeShape EntityType="MangalDBNewModel.tblZonemaster" Width="1.5" PointX="23.375" PointY="20.75" />
         <EntityTypeShape EntityType="MangalDBNewModel.tblSchemeTransMonth" Width="1.5" PointX="23.375" PointY="23.75" />
+        <EntityTypeShape EntityType="MangalDBNewModel.tblStateMaster" Width="1.5" PointX="15.625" PointY="24.625" />
+        <AssociationConnector Association="MangalDBNewModel.FK_tblStateMaster_tbl_CountryMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

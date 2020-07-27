@@ -17,5 +17,8 @@ namespace MangalWeb.Model.Entity
         public int StateID { get; set; }
         public string StateName { get; set; }
         public int countryID { get; set; }
+        public string StateCode { get; set; }
+    
+        public virtual tbl_CountryMaster tbl_CountryMaster { get; set; }
     }
 }
