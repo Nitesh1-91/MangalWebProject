@@ -14,11 +14,9 @@ namespace MangalWeb.Controllers
         StateService _stateService = new StateService();
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public JsonResult CreateEdit(StateViewModel state)
         {
-            state.CreatedBy = Convert.ToInt32(Session["UserLoginId"]);
-            state.UpdatedBy = Convert.ToInt32(Session["UserLoginId"]);
             try
             {
                 if (state.ID <= 0)
@@ -40,7 +38,7 @@ namespace MangalWeb.Controllers
             {
                 throw new Exception(ex.Message);
             }
-
+            ViewBag.CountryList = new SelectList(_stateService.GetCountryMasterList(), "CountryID", "CountryName");
             return Json(state);
         }
 

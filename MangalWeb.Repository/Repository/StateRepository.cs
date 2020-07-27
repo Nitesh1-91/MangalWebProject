@@ -29,6 +29,7 @@ namespace MangalWeb.Repository.Repository
             var tblstate = _context.tblStateMasters.Where(x=>x.StateID==Id).FirstOrDefault();
             StateViewModel statemodel = new StateViewModel();
             statemodel.ID = tblstate.StateID;
+            statemodel.StateCode = tblstate.StateCode;
             statemodel.StateName = tblstate.StateName;
             statemodel.CountryId = tblstate.countryID;
             return statemodel;
@@ -76,6 +77,7 @@ namespace MangalWeb.Repository.Repository
             {
                 tblstate = _context.tblStateMasters.Where(x => x.StateID == model.ID).FirstOrDefault();
             }
+            tblstate.StateCode = model.StateCode;
             tblstate.StateName = model.StateName;
             tblstate.countryID = model.CountryId;
             _context.SaveChanges();
