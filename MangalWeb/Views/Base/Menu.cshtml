@@ -1,59 +1,68 @@
-﻿<div id="sidebar" class="nav-collapse ">
-    <!-- sidebar menu start-->
-    <ul class="sidebar-menu">
-        @*<li class="">
-            <a class="" href="#">
-                <i class="icon_house_alt"></i>
-                <span>Dashboard</span>
+﻿@model IEnumerable<MangalWeb.Model.MenuViewModel>
+@using MangalWeb.Model;
+<aside id="sidebar_left" class="nano nano-primary  affix has-scrollbar sidebar-light sidebar-light1">
+    <div class="nano-content">
+        <!-- sidebar menu -->
+        <ul class="nav sidebar-menu">
+            <!--<li class="sidebar-label pt20">Menu</li>-->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Masters
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @Html.ActionLink("State", "State", "State")<br />
+                    @Html.ActionLink("City", "City", "City")<br />
+                    @Html.ActionLink("Zone", "Zone", "Zone")<br />
+                    @Html.ActionLink("Pincode", "Pincode", "Pincode")<br />
+                    @Html.ActionLink("Source of Application", "SourceApplication", "SourceofApplication")<br />
+                    @Html.ActionLink("Document", "Document", "Document")<br />
+                    @Html.ActionLink("Ornament", "Ornament", "Ornament")<br />
+                    @Html.ActionLink("Reason", "Reason", "Reason")<br />
+                    @Html.ActionLink("Audit Checklist", "Auditchecklist", "AuditCheckList")<br />
+                    @Html.ActionLink("GST", "GST", "GST")<br />
+                    @Html.ActionLink("Charge", "Charge", "Charge")<br />
+                    @Html.ActionLink("Penalty", "PenaltySlab", "PenaltySlab")<br />
+                    @Html.ActionLink("Scheme", "Scheme", "Scheme")<br />
+                    @Html.ActionLink("Product Rate", "ProductRate", "ProductRate")<br />
+                    @Html.ActionLink("Branch Master", "Branch", "Branch")<br />
+                    @Html.ActionLink("Financial Year", "FinancialYear", "FinancialYear")<br />
+                    @Html.ActionLink("Deviation", "Deviation", "Deviation")<br />
+                    @Html.ActionLink("Document Upload", "DocumentUpload", "DocumentUpload")<br />
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Transactions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @Html.ActionLink("State", "State", "State")<br />
+                    @Html.ActionLink("Document Upload", "DocumentUpload", "DocumentUpload")<br />
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Reports
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @Html.ActionLink("State", "State", "State")<br />
+                    @Html.ActionLink("Document Upload", "DocumentUpload", "DocumentUpload")<br />
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Utilities
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @Html.ActionLink("State", "State", "State")<br />
+                    @Html.ActionLink("Document Upload", "DocumentUpload", "DocumentUpload")<br />
+                </div>
+            </div>
+                
+        </ul>
+        <div class="sidebar-toggle-mini">
+            <a href="#">
+                <span class="fa fa-sign-out"></span>
             </a>
-        </li>*@
-        <li class="sub-menu">
-            <a href="javascript:;" class="">
-                <i class="icon_document_alt"></i>
-                <span>Masters</span>
-                <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-                <li>@Html.ActionLink("State", "State", "State")</li>
-                <li>
-                    @Html.ActionLink("City", "City", "City")
-                </li>
-                <li>@Html.ActionLink("Zone", "Zone", "Zone")</li>
-                <li>@Html.ActionLink("Pincode", "Pincode", "Pincode")</li>
-            </ul>
-        </li>
-        <li class="sub-menu">
-            <a href="javascript:;" class="">
-                <i class="icon_desktop"></i>
-                <span>Transactions</span>
-                <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-                <li><a class="" href="general.html">KYC</a></li>
-                <li><a class="" href="buttons.html">Document Upload</a></li>
-                <li><a class="" href="grids.html">Document Verification</a></li>
-            </ul>
-        </li>
-        <li class="sub-menu">
-            <a href="javascript:;" class="">
-                <i class="icon_table"></i>
-                <span>Reports</span>
-                <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-                <li><a class="" href="basic_table.html">Reports</a></li>
-            </ul>
-        </li>
-        <li class="sub-menu ">
-            <a href="javascript:;" class="">
-                <i class="icon_documents_alt"></i>
-                <span>Utilities</span>
-                <span class="menu-arrow arrow_carrot-right"></span>
-            </a>
-            <ul class="sub">
-                <li><a class="" href="profile.html">Utilities</a></li>
-            </ul>
-        </li>
-    </ul>
-    <!-- sidebar menu end-->
-</div>
+        </div>
+    </div>
+</aside>

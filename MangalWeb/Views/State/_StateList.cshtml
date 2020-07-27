@@ -16,9 +16,9 @@
                         @foreach (tblStateMaster item in Model)
                         {
                             <tr class="gradeX" onclick='window.document.location="/State/GetStateById?ID=@item.StateID"'>
+                                <td>@item.StateCode</td>
                                 <td>@item.StateName</td>
-                                <td>@item.StateName</td>
-                                <td>@item.countryID</td>
+                                <td>@item.tbl_CountryMaster.CountryName</td>
                             </tr>
                         }
                     </tbody>
