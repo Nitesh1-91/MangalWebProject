@@ -49,16 +49,10 @@ namespace MangalWeb.Service.Service
             return stateid;
         }
 
-        public int StateViewModel(int StateId)
-        {
-            int stateid = _stateRepository.GetCityNameExists(StateId);
-            return stateid;
-        }
-
         public bool SaveRecord(StateViewModel model)
         {
-            var countrylist = _stateRepository.AddorUpdateRecord(model);
-            return countrylist;
+            var state = _stateRepository.AddorUpdateRecord(model);
+            return state;
         }
 
     }
